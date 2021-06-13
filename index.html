@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>proyectoFinal</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="libraries/p5.sound.js"></script>
+
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+	<script src="./assets/mx_statespoblation.json"></script>
+	<style>
+		body{
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
+		canvas {
+			margin:auto;
+		}
+		#map { width: 100%; height: 450px; }
+		.mapboxgl-popup {
+			max-width: 400px;
+			font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+		}
+	</style>
+</head>
+<body class="bg-light">
+	<nav>
+		<div class="py-2 px-3 bg-dark">
+			<h3 class="container text-white">Información COVID México</h3>
+		</div>
+	</nav>
+	<div class="container">
+		<div id="generalInformation" class="row mx-2 mb-4">
+			<div class="py-2">
+				<h5>Informacion general <i class="fas fa-info-circle"></i></h5>
+			</div>
+			<div class="col d-flex mx-2 shadow bg-danger rounded text-white">
+				<div class="col py-2">
+					<small><span>Infectados</span></small>
+					<h5 id="infectedNum">0</h5>
+				</div>
+				<div class="my-auto">
+					<i class="fas fa-virus"></i>
+				</div>
+			</div>
+			<div class="col d-flex mx-2 shadow bg-warning rounded text-white">
+				<div class="col py-2">
+					<small><span>Sospechosos</span></small>
+					<h5 id="suspectedNum">0</h5>
+				</div>
+				<div class="my-auto">
+					<i class="fas fa-question"></i>
+				</div>
+			</div>
+			<div class="col d-flex mx-2 shadow bg-success rounded text-white">
+				<div class="col py-2">
+					<small><span>Negativos</span></small>
+					<h5 id="negativeNum">0</h5>
+				</div>
+				<div class="my-auto">
+					<i class="fas fa-minus"></i>
+				</div>
+			</div>
+			<div class="col d-flex mx-2 shadow bg-dark rounded text-white">
+				<div class="col py-2">
+					<small><span>Defunciones</span></small>
+					<h5 id="deathNum">0</h5>
+				</div>
+				<div class="my-auto">
+					<i class="fas fa-ribbon"></i>
+				</div>
+			</div>
+		</div>
+		<div class="row mx-2 mb-2">
+			<div class="pb-2">
+				<h5>Informacion por estado <i class="fas fa-info-circle"></i></h5>
+			</div>
+			<div class="col-md-6 col-sm-12 px-2 p-0">
+				<div class="alert-secondary px-0 rounded-top">
+					<h5 class="my-0 p-2 text-secondary">Información mapa</h5>
+				</div>
+				<div id="map" class="mx-0"></div>
+			</div>
+			<div class="col-md-6 col-sm-12" style="height: 450px;">
+				<div class="alert-secondary px-0 rounded-top">
+					<h5 class="my-0 p-2 text-secondary">Mayor # de infectados</h5>
+				</div>
+				<canvas id="infectedChart" class="border" style="width: 100%; height: 100%;"></canvas>
+			</div>
+		</div>
+		<div class="row mx-2 mb-2">
+			<div class="col-md-6 col-sm-12" style="height: 450px;">
+				<div class="alert-secondary px-0 rounded-top">
+					<h5 class="my-0 p-2 text-secondary">Mayor # de defunciones</h5>
+				</div>
+				<canvas id="deceasedChart" class="border" style="width: 100%; height: 100%;"></canvas>
+			</div>
+		</div>
+	</div>
+	<footer class="footer mt-5">
+		<div class="bg-dark py-2">
+			<h6 class="my-0 py-2 text-white text-center">Apify - Chart.js - mapbox - Font Awesome</h6>
+		</div>
+	</footer>
+	<script src="sketch.js"></script>
+</body>
+</html>
